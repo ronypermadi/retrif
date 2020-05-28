@@ -8,6 +8,7 @@ use App\Order;
 use App\Payment;
 use Carbon\Carbon;
 use DB;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -15,6 +16,7 @@ class OrderController extends Controller
         $orders = Order::where('customer_id', auth()->guard('customer')->user()->id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('front.ecommerce.orders.index', compact('orders'));
     }
+
     public function view($invoice){
         $order = Order::with(['district.city.province', 'details', 'details.product', 'payment'])
         ->where('invoice', $invoice)->first();
@@ -29,6 +31,7 @@ class OrderController extends Controller
         //JIKA FALSE, MAKA REDIRECT KE HALAMAN YANG DIINGINKAN
         return redirect(route('customer.orders'))->with(['error' => 'Anda Tidak Diizinkan Untuk Mengakses Order Orang Lain']);
     }
+
     public function paymentForm(){
         return view('front.ecommerce.payment');
     }
@@ -49,6 +52,7 @@ class OrderController extends Controller
         try {
             $order = Order::where('invoice', $request->invoice)->first();
             if ($order->subtotal != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
+            
             //JIKA STATUSNYA MASIH 0 DAN ADA FILE BUKTI TRANSFER YANG DI KIRIM
             if ($order->status == 0 && $request->hasFile('proof')) {
                 //MAKA UPLOAD FILE GAMBAR TERSEBUT
@@ -81,6 +85,21 @@ class OrderController extends Controller
             //DAN KIRIMKAN PESAN ERROR
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
+    }
+
+    public function pdf($invoice){
+        //GET DATA ORDER BERDASRKAN INVOICE
+        $order = Order::with(['district.city.province', 'details', 'details.product', 'payment'])
+            ->where('invoice', $invoice)->first();
+        //MENCEGAH DIRECT AKSES OLEH USER, SEHINGGA HANYA PEMILIKINYA YANG BISA MELIHAT FAKTURNYA
+        if (!\Gate::forUser(auth()->guard('customer')->user())->allows('order-view', $order)) {
+            return redirect(route('customer.view_order', $order->invoice));
+        }
+
+        //JIKA DIA ADALAH PEMILIKNYA, MAKA LOAD VIEW BERIKUT DAN PASSING DATA ORDERS
+        $pdf = PDF::loadView('front.ecommerce.orders.pdf', compact('order'));
+        //KEMUDIAN BUKA FILE PDFNYA DI BROWSER
+        return $pdf->stream();
     }
 
 }

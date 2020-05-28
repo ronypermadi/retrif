@@ -37,22 +37,27 @@
                 </div>
 								<div class="card-body">
 									<table>
-                      <tr>
-                          <td width="30%">Nama Lengkap</td>
-                          <td width="5%">:</td>
-                          <th>{{ $order->customer_name }}</th>
-                      </tr>
-                      <tr>
-                          <td>No Telp</td>
-                          <td>:</td>
-                          <th>{{ $order->customer_phone }}</th>
-                      </tr>
-                      <tr>
-                          <td>Alamat</td>
-                          <td>:</td>
-                          <th>{{ $order->customer_address }}, {{ $order->district->name }} {{ $order->district->city->name }}, {{ $order->district->city->province->name }}</th>
-                      </tr>
-                  </table>
+                                        <tr>
+                                            <td width="30%">InvoiceID</td>
+                                            <td width="5%">:</td>
+                                            <th><a href="{{ route('customer.order_pdf', $order->invoice) }}" target="_blank"><strong>{{ $order->invoice }}</strong></a></th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Lengkap</td>
+                                            <td width="5%">:</td>
+                                            <th>{{ $order->customer_name }}</th>
+                                        </tr>
+                                        <tr>
+                                            <td>No Telp</td>
+                                            <td>:</td>
+                                            <th>{{ $order->customer_phone }}</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat</td>
+                                            <td>:</td>
+                                            <th>{{ $order->customer_address }}, {{ $order->district->name }} {{ $order->district->city->name }}, {{ $order->district->city->province->name }}</th>
+                                        </tr>
+                                    </table>
 								</div>
 							</div>
 						</div>
