@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','front\HomeController@index');
+Route::get('/', 'front\FrontController@index')->name('front.index');
+Route::get('/product', 'front\FrontController@product')->name('front.product');
+Route::get('/category/{slug}', 'front\FrontController@categoryProduct')->name('front.category');
+Route::get('/product/{slug}', 'front\FrontController@show')->name('front.show_product');
+Route::post('cart', 'front\CartController@addToCart')->name('front.cart');
+Route::get('/cart', 'front\CartController@listCart')->name('front.list_cart');
+Route::post('/cart/update', 'front\CartController@updateCart')->name('front.update_cart');
+
 Auth::routes();
 
 //JADI INI GROUPING ROUTE, SEHINGGA SEMUA ROUTE YANG ADA DIDALAMNYA
