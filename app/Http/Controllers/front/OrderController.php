@@ -47,8 +47,8 @@ class OrderController extends Controller
         //DEFINE DATABASE TRANSACTION UNTUK MENGHINDARI KESALAHAN SINKRONISASI DATA JIKA TERJADI ERROR DITENGAH PROSES QUERY
         DB::beginTransaction();
         try {
-            //AMBIL DATA ORDER BERDASARKAN INVOICE ID
             $order = Order::where('invoice', $request->invoice)->first();
+            if ($order->subtotal != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
             //JIKA STATUSNYA MASIH 0 DAN ADA FILE BUKTI TRANSFER YANG DI KIRIM
             if ($order->status == 0 && $request->hasFile('proof')) {
                 //MAKA UPLOAD FILE GAMBAR TERSEBUT
