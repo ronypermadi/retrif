@@ -37,3 +37,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
     Route::get('/product/bulk', 'back\ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'back\ProductController@massUpload')->name('product.saveBulk');
 });
+
+Route::group(['prefix' => 'member', 'namespace' => 'front'], function() {
+    Route::get('login', 'LoginController@loginForm')->name('customer.login');
+    Route::post('login', 'LoginController@login')->name('customer.post_login');
+    Route::get('verify/{token}', 'FrontController@verifyCustomerRegistration')->name('customer.verify');
+
+    Route::group(['middleware' => 'customer'], function() {
+        Route::get('dashboard', 'front\LoginController@dashboard')->name('customer.dashboard');
+        Route::get('logout', 'front\LoginController@logout')->name('customer.logout');
+    });
+
+});
