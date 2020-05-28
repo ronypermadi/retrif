@@ -8,6 +8,12 @@ use App\Product;
 
 class CartController extends Controller
 {
+    private function getCarts(){
+        $carts = json_decode(request()->cookie('my-carts'), true);
+        $carts = $carts != '' ? $carts:[];
+        return $carts;
+    }
+
     public function addToCart(Request $request){
         //VALIDASI DATA YANG DIKIRIM
         $this->validate($request, [
@@ -44,7 +50,7 @@ class CartController extends Controller
 
     public function listCart(){
         //MENGAMBIL DATA DARI COOKIE
-        $carts = json_decode(request()->cookie('my-carts'), true);
+        $carts = $this->getCarts();
         //UBAH ARRAY MENJADI COLLECTION, KEMUDIAN GUNAKAN METHOD SUM UNTUK MENGHITUNG SUBTOTAL
         $subtotal = collect($carts)->sum(function($q) {
             return $q['qty'] * $q['product_price']; //SUBTOTAL TERDIRI DARI QTY * PRICE
@@ -55,7 +61,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request){
         //AMBIL DATA DARI COOKIE
-        $carts = json_decode(request()->cookie('my-carts'), true);
+        $carts = $this->getCarts();
         //KEMUDIAN LOOPING DATA PRODUCT_ID, KARENA NAMENYA ARRAY PADA VIEW SEBELUMNYA
         //MAKA DATA YANG DITERIMA ADALAH ARRAY SEHINGGA BISA DI-LOOPING
         if($request->product_id){
