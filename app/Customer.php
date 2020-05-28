@@ -14,4 +14,9 @@ class Customer extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+    
+    public function district(){
+        return $this->belongsTo(District::class);
+    }
+
 }
