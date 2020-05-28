@@ -23,5 +23,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
     Route::get('/', 'back\HomeController@index')->name('home'); //JADI ROUTING INI SUDAH ADA DARI ARTIKEL SEBELUMNYA TAPI KITA PINDAHKAN KEDALAM GROUPING
 
     Route::resource('category', 'back\CategoryController')->except(['create', 'show']);
-    Route::resource('product', 'back\ProductController');
+    Route::resource('product', 'back\ProductController')->except(['show']);
+    Route::get('/product/bulk', 'back\ProductController@massUploadForm')->name('product.bulk');
+    Route::post('/product/bulk', 'back\ProductController@massUpload')->name('product.saveBulk');
 });

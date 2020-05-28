@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Support\Str;
 use File;
+use App\Jobs\ProductJob;
 
 class ProductController extends Controller
 {
@@ -83,4 +84,74 @@ class ProductController extends Controller
         return redirect(route('product.index'))->with(['success' => 'Produk Sudah Dihapus']);
     }
 
+    public function massUploadForm(){
+        $category = Category::orderBy('name', 'DESC')->get();
+        return view('back.product.bulk', compact('category'));
+    }
+
+    public function massUpload(Request $request){
+    //VALIDASI DATA YANG DIKIRIM
+        $this->validate($request, [
+            'category_id' => 'required|exists:categories,id',
+            'file' => 'required|mimes:xlsx' //PASTIKAN FORMAT FILE YANG DITERIMA ADALAH XLSX
+        ]);
+
+        //JIKA FILE-NYA ADA
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = time() . '-product.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/uploads', $filename); //MAKA SIMPAN FILE TERSEBUT DI STORAGE/APP/PUBLIC/UPLOADS
+
+            //BUAT JADWAL UNTUK PROSES FILE TERSEBUT DENGAN MENGGUNAKAN JOB
+            //ADAPUN PADA DISPATCH KITA MENGIRIMKAN DUA PARAMETER SEBAGAI INFORMASI
+            //YAKNI KATEGORI ID DAN NAMA FILENYA YANG SUDAH DISIMPAN
+            ProductJob::dispatch($request->category_id, $filename);
+            return redirect()->back()->with(['success' => 'Upload Produk Dijadwalkan']);
+            $exitCode = \Artisan::call('queue:work');
+        }
+    }
+
+    public function edit($id){
+        $product = Product::find($id); //AMBIL DATA PRODUK TERKAIT BERDASARKAN ID
+        $category = Category::orderBy('name', 'DESC')->get(); //AMBIL SEMUA DATA KATEGORI
+        return view('back.product.edit', compact('product', 'category')); //LOAD VIEW DAN PASSING DATANYA KE VIEW
+    }
+
+    public function update(Request $request, $id){
+    //VALIDASI DATA YANG DIKIRIM
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+            'description' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|integer',
+            'weight' => 'required|integer',
+            'status' => 'required',
+            'image' => 'nullable|image|mimes:png,jpeg,jpg' //IMAGE BISA NULLABLE
+        ]);
+
+        $product = Product::find($id); //AMBIL DATA PRODUK YANG AKAN DIEDIT BERDASARKAN ID
+        $filename = $product->image; //SIMPAN SEMENTARA NAMA FILE IMAGE SAAT INI
+    
+        //JIKA ADA FILE GAMBAR YANG DIKIRIM
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            //MAKA UPLOAD FILE TERSEBUT
+            $file->storeAs('public/products', $filename);
+            //DAN HAPUS FILE GAMBAR YANG LAMA
+            File::delete(storage_path('app/public/products/' . $product->image));
+        }
+
+    //KEMUDIAN UPDATE PRODUK TERSEBUT
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'weight' => $request->weight,
+            'status' => $request->status,
+            'image' => $filename
+        ]);
+        return redirect(route('product.index'))->with(['success' => 'Data Produk Diperbaharui']);
+    }
 }
