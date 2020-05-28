@@ -34,7 +34,12 @@ class Category extends Model
     }
     
     public function child(){
-    //MENGGUNAKAN RELASI ONE TO MANY DENGAN FOREIGN KEY parent_id
-    return $this->hasMany(Category::class, 'parent_id');
+        //MENGGUNAKAN RELASI ONE TO MANY DENGAN FOREIGN KEY parent_id
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function product(){
+        //JENIS RELASINYA ADALAH ONE TO MANY, YANG BERARTI KATEGORI INI BISA DIGUNAKAN OLEH BANYAK PRODUK
+        return $this->hasMany(Product::class);
     }
 }
