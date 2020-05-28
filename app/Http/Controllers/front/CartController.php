@@ -114,7 +114,7 @@ class CartController extends Controller
     }
 
     public function processCheckout(Request $request){
-        //VALIDASI DATANYA
+        
         $this->validate($request, [
             'customer_name' => 'required|string|max:100',
             'customer_phone' => 'required',
@@ -132,34 +132,33 @@ class CartController extends Controller
             //CHECK DATA CUSTOMER BERDASARKAN EMAIL
             $customer = Customer::where('email', $request->email)->first();
             //JIKA DIA TIDAK LOGIN DAN DATA CUSTOMERNYA ADA
-            if (!auth()->check() && $customer) {
-                //MAKA REDIRECT DAN TAMPILKAN INSTRUKSI UNTUK LOGIN 
+            if (!auth()->guard('customer')->check() && $customer) {
                 return redirect()->back()->with(['error' => 'Silahkan Login Terlebih Dahulu']);
             }
 
-            //AMBIL DATA KERANJANG
             $carts = $this->getCarts();
-            //HITUNG SUBTOTAL BELANJAAN
             $subtotal = collect($carts)->sum(function($q) {
                 return $q['qty'] * $q['product_price'];
             });
 
-            //SIMPAN DATA CUSTOMER BARU
-            $password = Str::random(8); 
-            $customer = Customer::create([
-                'name' => $request->customer_name,
-                'email' => $request->email,
-                'password' => $password,
-                'phone_number' => $request->customer_phone,
-                'address' => $request->customer_address,
-                'district_id' => $request->district_id,
-                'activate_token' => Str::random(30),
-                'status' => false
-            ]);
+           //UNTUK MENGHINDARI DUPLICATE CUSTOMER, MASUKKAN QUERY UNTUK MENAMBAHKAN CUSTOMER BARU
+            //SEBENARNYA VALIDASINYA BISA DIMASUKKAN PADA METHOD VALIDATION DIATAS, TAPI TIDAK MENGAPA UNTUK MENCOBA CARA BERBEDA
+            if (!auth()->guard('customer')->check()) {
+                $password = Str::random(8);
+                $customer = Customer::create([
+                    'name' => $request->customer_name,
+                    'email' => $request->email,
+                    'password' => $password,
+                    'phone_number' => $request->customer_phone,
+                    'address' => $request->customer_address,
+                    'district_id' => $request->district_id,
+                    'activate_token' => Str::random(30),
+                    'status' => false
+                ]);
+            }
 
-            //SIMPAN DATA ORDER
             $order = Order::create([
-                'invoice' => Str::random(4) . '-' . time(), //INVOICENYA KITA BUAT DARI STRING RANDOM DAN WAKTU
+                'invoice' => Str::random(4) . '-' . time(),
                 'customer_id' => $customer->id,
                 'customer_name' => $customer->name,
                 'customer_phone' => $request->customer_phone,
@@ -168,11 +167,8 @@ class CartController extends Controller
                 'subtotal' => $subtotal
             ]);
 
-            //LOOPING DATA DI CARTS
             foreach ($carts as $row) {
-                //AMBIL DATA PRODUK BERDASARKAN PRODUCT_ID
                 $product = Product::find($row['product_id']);
-                //SIMPAN DETAIL ORDER
                 OrderDetail::create([
                     'order_id' => $order->id,
                     'product_id' => $row['product_id'],
@@ -188,8 +184,10 @@ class CartController extends Controller
             $carts = [];
             //KOSONGKAN DATA KERANJANG DI COOKIE
             $cookie = cookie('my-cart', json_encode($carts), 2880);
-
-            Mail::to($request->email)->send(new CustomerRegisterMail($customer, $password));
+            //EMAILNYA JUGA UNTUK CUSTOMER BARU
+            if (!auth()->guard('customer')->check()) {
+                Mail::to($request->email)->send(new CustomerRegisterMail($customer, $password));
+            }
             //REDIRECT KE HALAMAN FINISH TRANSAKSI
             return redirect(route('front.finish_checkout', $order->invoice))->cookie($cookie);
         } catch (\Exception $e) {
