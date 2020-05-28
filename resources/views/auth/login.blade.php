@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('back.layouts.auth')
 
 @section('title')
     <title>Login</title>

@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/','front\HomeController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//JADI INI GROUPING ROUTE, SEHINGGA SEMUA ROUTE YANG ADA DIDALAMNYA
+//SECARA OTOMATIS AKAN DIAWALI DENGAN administrator
+//CONTOH: /administrator/category ATAU /administrator/product, DAN SEBAGAINYA
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
+    Route::get('/', 'back\HomeController@index')->name('home'); //JADI ROUTING INI SUDAH ADA DARI ARTIKEL SEBELUMNYA TAPI KITA PINDAHKAN KEDALAM GROUPING
+
+    //INI ADALAH ROUTE BARU
+    Route::resource('category', 'back\CategoryController')->except(['create', 'show']);
+});

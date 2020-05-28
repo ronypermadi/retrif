@@ -23,14 +23,14 @@
     {{-- <!-- @INCLUDE SAMA DENGAN FUNGSI INCLUDE DI PHP, HANYA SAJA PENULISAN DIBLADE MENJADI @INCLUDE, BERARTI KITA ME-LOAD FILE LAINNYA -->
   	<!-- KENAPA HEADER DIPISAHKAN? AGAR LEBIH RAPI SAJA JADI LEBIH MUDAH MAINTENANCENYA -->
     <!-- KETIKA MELOAD FILE BLADE, MAKA EKSTENSI .BLADE.PHP TIDAK PERLU DITULISKAN --> --}}
-    @include('layouts.module.header')
+    @include('back.layouts.module.header')
   
     <div class="app-body" id="dw">
         <div class="sidebar">
           
           	<!-- SIDEBAR JUGA KITA PISAHKAN CODENYA MENJADI FILE TERSENDIRI -->
             <!-- KETIKA MELOAD FILE BLADE, MAKA EKSTENSI .BLADE.PHP TIDAK PERLU DITULISKAN -->
-            @include('layouts.module.sidebar')
+            @include('back.layouts.module.sidebar')
           
             <button class="sidebar-minimizer brand-minimizer" type="button"></button>
         </div>
