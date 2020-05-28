@@ -44,8 +44,8 @@ Route::group(['prefix' => 'member', 'namespace' => 'front'], function() {
     Route::get('verify/{token}', 'FrontController@verifyCustomerRegistration')->name('customer.verify');
 
     Route::group(['middleware' => 'customer'], function() {
-        Route::get('dashboard', 'front\LoginController@dashboard')->name('customer.dashboard');
-        Route::get('logout', 'front\LoginController@logout')->name('customer.logout');
+        Route::get('dashboard', 'LoginController@dashboard')->name('customer.dashboard');
+        Route::get('logout', 'LoginController@logout')->name('customer.logout');
     });
 
 });

@@ -36,7 +36,7 @@ class CustomerRegisterMail extends Mailable
     {
         //MENGESET SUBJECT EMAIL, VIEW MANA YANG AKAN DI-LOAD DAN DATA APA YANG AKAN DIPASSING KE VIEW
         return $this->subject('Verifikasi Pendaftaran Anda')
-            ->view('emails.register')
+            ->view('email.register')
             ->with([
                 'customer' => $this->customer,
                 'password' => $this->randomPassword
