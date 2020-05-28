@@ -20,6 +20,9 @@ Route::get('/product/{slug}', 'front\FrontController@show')->name('front.show_pr
 Route::post('cart', 'front\CartController@addToCart')->name('front.cart');
 Route::get('/cart', 'front\CartController@listCart')->name('front.list_cart');
 Route::post('/cart/update', 'front\CartController@updateCart')->name('front.update_cart');
+Route::get('/checkout', 'front\CartController@checkout')->name('front.checkout');
+Route::post('/checkout', 'front\CartController@processCheckout')->name('front.store_checkout');
+Route::get('/checkout/{invoice}', 'front\CartController@checkoutFinish')->name('front.finish_checkout');
 
 Auth::routes();
 

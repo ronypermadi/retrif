@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('city', 'front\CartController@getCity'); //ROUTE API UNTUK /CITY
+Route::get('district', 'front\CartController@getDistrict'); //ROUTE API UNTUK /DISTRICT
