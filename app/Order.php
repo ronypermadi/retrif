@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $guarded = [];
     
-    protected $appends = ['status_label', 'ref_status_label', 'commission'];
+    protected $appends = ['status_label', 'ref_status_label', 'commission', 'total'];
 
     public function getStatusLabelAttribute(){
         if ($this->status == 0) {
@@ -21,6 +21,10 @@ class Order extends Model
             return '<span class="badge badge-warning">Dikirim</span>';
         }
         return '<span class="badge badge-success">Selesai</span>';
+    }
+    
+    public function getTotalAttribute(){
+        return $this->subtotal + $this->cost;
     }
     
     public function getRefStatusLabelAttribute(){
