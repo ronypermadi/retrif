@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>OneMarket - Ecommerce</title>
+    <title>OneMarket - Ecommerce and Service Job</title>
 @endsection
 
 @section('content')
@@ -12,8 +12,8 @@
 			<div class="container">
 				<div class="banner_content row">
 					<div class="offset-lg-2 col-lg-8">
-						<h3>Fashion for
-							<br />Upcoming Winter</h3>
+						<h3>Your Brand's Name
+							<br/> Lorem ipsum dolor sit amet</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 							aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 						<a class="white_bg_btn" href="#">View Collection</a>
@@ -31,7 +31,7 @@
 			<h2>Semua Kategori</h2>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae excepturi, quae officia cum repellendus quidem molestias earum repellat dignissimos, voluptate labore sapiente repudiandae inventore eum, similique modi impedit quasi. Quas..</p>
 			<br>
-			<div class="container">
+			{{-- <div class="container">
 				<div class="row searchFilter" >
 				   <div class="col-sm-12" >
 					<div class="input-group" >
@@ -54,11 +54,12 @@
 				   </div>
 				</div>
 			</div>
+			<br> --}}
 		</div>
 	</div>
 	<div class="container-fluid row">
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html">
+			<a href="#">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-mobile"></i></div>
@@ -68,7 +69,7 @@
 			</a>
 		</div>
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab2">
+			<a href="##parentVerticalTab2">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-laptop"></i></div>
@@ -78,7 +79,7 @@
 			</a>
 		</div>
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab3">
+			<a href="##parentVerticalTab3">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-car"></i></div>
@@ -88,7 +89,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab4">
+			<a href="##parentVerticalTab4">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-motorcycle"></i></div>
@@ -98,7 +99,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab5">
+			<a href="##parentVerticalTab5">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-wheelchair"></i></div>
@@ -108,7 +109,7 @@
 			</a>
 		</div>
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab6">
+			<a href="##parentVerticalTab6">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-paw"></i></div>
@@ -118,7 +119,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab7">
+			<a href="##parentVerticalTab7">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-book"></i></div>
@@ -128,7 +129,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab8">
+			<a href="##parentVerticalTab8">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-asterisk"></i></div>
@@ -138,7 +139,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab9">
+			<a href="##parentVerticalTab9">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-gamepad"></i></div>
@@ -148,7 +149,7 @@
 			</a>
 		</div>	
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab10">
+			<a href="##parentVerticalTab10">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-shield"></i></div>
@@ -158,7 +159,7 @@
 			</a>
 		</div>
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab11">
+			<a href="##parentVerticalTab11">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-at"></i></div>
@@ -168,7 +169,7 @@
 			</a>
 		</div>
 		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab12">
+			<a href="##parentVerticalTab12">
 				<div class="focus-border">
 					<div class="focus-layout">
 						<div class="focus-image"><i class="fa fa-home"></i></div>

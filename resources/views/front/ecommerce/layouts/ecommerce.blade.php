@@ -41,17 +41,11 @@
 		<div class="top_menu row m0">
 			<div class="container-fluid">
 				<div class="float-left">
-					<p>Call Us: 012 44 5698 7456 896</p>
+					<p>Hubungi kami : 0272 0000 0000</p>
 				</div>
 				<div class="float-right">
 					<ul class="right_side">
-						@if (auth()->guard('customer')->check())
-							<li><a href="{{ route('customer.logout') }}">Logout</a></li>
-						@else
-							<li><a href="{{ route('customer.login') }}">Login</a></li>
-						@endif
-						<li><a href="{{ route('customer.dashboard') }}">My Account</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
+						<h5>{{\Carbon\Carbon::now()->format('d M Y')}}</h5>
 					</ul>
 				</div>
 			</div>
@@ -73,23 +67,77 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<div class="row w-100">
 							<div class="col-lg-7 pr-0">
-								@include('front.ecommerce.layouts.menu')
+								{{-- <ul class="nav navbar-nav center_nav  pull-right"></ul> --}}
+								 <div class="container-fluid">
+									<div class="input-group" id="adv-search">
+										<input type="text" class="form-control" placeholder="Search for anything" />
+										<div class="input-group-btn">
+											<div class="btn-group" role="group">
+												<div class="dropdown dropdown-lg">
+													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+													<div class="dropdown-menu dropdown-menu-right" role="menu">
+														<form class="form-horizontal" role="form">
+														  <div class="form-group">
+															<label for="filter">Pilih Provinsi</label>
+															<select class="form-control">
+																<option value="0" selected>All Snippets</option>
+																<option value="1">Featured</option>
+																<option value="2">Most popular</option>
+																<option value="3">Top rated</option>
+																<option value="4">Most commented</option>
+															</select>
+														  </div>
+														  <div class="form-group">
+															<label for="filter">Pilih Provinsi</label>
+															<select class="form-control">
+																<option value="0" selected>All Snippets</option>
+																<option value="1">Featured</option>
+																<option value="2">Most popular</option>
+																<option value="3">Top rated</option>
+																<option value="4">Most commented</option>
+															</select>
+														  </div>
+														  <div class="form-group">
+															<label for="filter">Pilih Provinsi</label>
+															<select class="form-control">
+																<option value="0" selected>All Snippets</option>
+																<option value="1">Featured</option>
+																<option value="2">Most popular</option>
+																<option value="3">Top rated</option>
+																<option value="4">Most commented</option>
+															</select>
+														  </div>
+														  <button type="submit" class="btn btn-primary"><span class="fa fa-search" aria-hidden="true"></span> Search</button>
+														</form>
+													</div>
+												</div>
+												<button type="button" class="btn btn-primary"><span class="fa fa-search" aria-hidden="true"></span> Search</button>
+											</div>
+										</div>
+									</div>
+								  </div>
+								</div>
 							</div>
-
 							<div class="col-lg-5">
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
-									{{-- <hr>
+									<hr>
+									@if (auth()->guard('customer')->check())
 									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-user" aria-hidden="true"></i>
+										<a href="{{ route('customer.dashboard') }}" class="icons"><i class="fa fa-user" aria-hidden="true"> Account</i>
 										</a>
 									</li>
-									<hr>
 									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										<a href="{{ route('customer.logout') }}" class="icons">
+											<i class="fa fa-sign-out" aria-hidden="true"></i>
 										</a>
-									</li> --}}
+									</li>
+									@else
+										<li class="nav-item">
+											<a href="{{ route('customer.login') }}" class="icons">
+												<i class="fa fa-sign-in" aria-hidden="true"> Login</i>
+											</a>
+										</li>
+									@endif									
 									<hr>
 									<li class="nav-item">
 										<a href="{{ route('front.list_cart') }}" class="icons">
@@ -103,6 +151,10 @@
 					</div>
 				</div>
 			</nav>
+		</div>
+		<div class="bot_menu row m0">
+			@include('front.ecommerce.layouts.menu')
+			
 		</div>
 	</header>
 	<!--================Header Menu Area =================-->
@@ -173,30 +225,11 @@
 					<div class="single-footer-widget instafeed">
 						<h6 class="footer_title">Instagram Feed</h6>
 						<ul class="list instafeed d-flex flex-wrap">
+							@for ($i = 1; $i <= 8; $i++)
 							<li>
 								<img src="{{ asset('ecommerce/img/instagram/Image-01.jpg') }}" alt="">
 							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-02.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-03.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-04.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-05.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-06.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-07.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-08.jpg') }}" alt="">
-							</li>
+							@endfor
 						</ul>
 					</div>
 				</div>
@@ -224,8 +257,8 @@
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
 				<p class="col-lg-12 footer-text text-center">
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                    All rights reserved | This template is made with 
-                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://daengweb.id" target="_blank">Daengweb</a>
+                    All rights reserved |
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.ronypermadi.com" target="_blank">Rony Permadi</a>
 				</p>
 			</div>
 		</div>

@@ -408,6 +408,114 @@ a {
       margin-top: -6px;
       right: 20px; }
 
+      
+.bot_menu {
+  background: #fff;
+  height: 40px;
+  line-height: 16px; }
+  .bot_menu .float-left p {
+    line-height: 40px;
+    color: #777777;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    margin: 0px;
+    text-transform: uppercase; }
+  .bot_menu .right_side {
+    margin-bottom: 0px;
+    padding: 12px 0; }
+    .bot_menu .right_side li {
+      display: inline-block; }
+      .bot_menu .right_side li:last-child a {
+        padding-right: 0px;
+        border-right: 0px; }
+      .bot_menu .right_side li a {
+        font-size: 12px;
+        color: #777777;
+        display: inline-block;
+        border-right: 1px solid rgba(175, 175, 175, 0.3);
+        transition: all 300ms linear 0s;
+        text-transform: uppercase;
+        padding: 0px 19px; }
+      .bot_menu .right_side li:hover a {
+        color: #1641ff; }
+        .bot_menu .left_side {
+          margin-bottom: 0px;
+          padding: 12px 0; }
+          .bot_menu .left_side li {
+            display: inline-block; }
+            .bot_menu .left_side li:last-child a {
+              padding-right: 0px;
+              border-right: 0px; }
+            .bot_menu .left_side li a {
+              font-size: 12px;
+              color: #777777;
+              display: inline-block;
+              border-right: 1px solid rgba(175, 175, 175, 0.3);
+              transition: all 300ms linear 0s;
+              text-transform: uppercase;
+              padding: 0px 19px; }
+            .bot_menu .left_side li:hover a {
+              color: #1641ff; }
+  .bot_menu .ac_btn {
+    line-height: 28px;
+    border: 1px solid #eeeeee;
+    display: inline-block;
+    background: #f9f9ff;
+    padding: 0px 19px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #777777;
+    transition: all 300ms linear 0s;
+    margin-right: 1px;
+    margin-top: 8px; }
+    .bot_menu .ac_btn:hover {
+      background: #1641ff;
+      color: #fff;
+      border-color: #1641ff; }
+  .bot_menu .dn_btn {
+    line-height: 28px;
+    border: 1px solid #1641ff;
+    display: inline-block;
+    background: #1641ff;
+    padding: 0px 19px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    transition: all 300ms linear 0s;
+    margin-top: 8px;
+    border-radius: 3px; }
+    .bot_menu .dn_btn:hover {
+      background: transparent;
+      color: #222222;
+      border-color: #1641ff; }
+  .bot_menu .lan_pack {
+    height: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    line-height: 28px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    padding-left: 19px;
+    padding-right: 36px;
+    color: #777777;
+    background: #f9f9ff;
+    margin-right: 5px;
+    margin-top: 8px; }
+    .bot_menu .lan_pack .current {
+      color: #777777; }
+    .bot_menu .lan_pack:after {
+      content: "\f0d7";
+      border: none !important;
+      font: normal normal normal 12px/1 FontAwesome;
+      transform: rotate(0deg);
+      height: auto;
+      margin-top: -6px;
+      right: 20px; }
+
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 /* Home Banner Area css
@@ -4673,3 +4781,48 @@ background:#df8012;
 }
 /* //search filter */
 
+/* search dropdown-filter */
+body {
+  padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+  margin-top: -1px;
+  padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+  display: flex !important;
+}
+.btn-group .btn {
+  border-radius: 0;
+  margin-left: -1px;
+}
+.btn-group .btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.form-group .form-control:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  #adv-search {
+      width: 500px;
+      margin: 0 auto;
+  }
+  .dropdown.dropdown-lg {
+      position: static !important;
+  }
+  .dropdown.dropdown-lg .dropdown-menu {
+      min-width: 500px;
+  }
+}
+/* //search dropdown-filter */

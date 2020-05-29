@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>Konfirmasi Pembayaran - DW Ecommerce</title>
+    <title>Konfirmasi Pembayaran - OneMarket</title>
 @endsection
 
 @section('css')
