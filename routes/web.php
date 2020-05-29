@@ -37,6 +37,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
     Route::get('/product/bulk', 'back\ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'back\ProductController@massUpload')->name('product.saveBulk');
 });
+Route::group(['prefix' => 'orders','middleware' => 'auth', 'namespace' => 'back'], function() {
+    Route::get('/', 'OrderController@index')->name('orders.index');
+    Route::delete('/{id}', 'OrderController@destroy')->name('orders.destroy');
+    Route::get('/{invoice}', 'OrderController@view')->name('orders.view');
+    Route::get('/payment/{invoice}', 'OrderController@acceptPayment')->name('orders.approve_payment');
+    Route::post('/shipping', 'OrderController@shippingOrder')->name('orders.shipping');
+});
 
 Route::group(['prefix' => 'member', 'namespace' => 'front'], function() {
     Route::get('login', 'LoginController@loginForm')->name('customer.login');
