@@ -61,7 +61,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
                     <a class="navbar-brand logo_h" href="{{ url('/') }}">
-						<img src="https://daengweb.id/front/dw-theme/images/logo-head.png" alt="">
+						<img src="{{ asset('assets/img/Logo.png') }}" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					 aria-expanded="false" aria-label="Toggle navigation">
@@ -78,13 +78,7 @@
 
 							<div class="col-lg-5">
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
-									<hr>
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</a>
-									</li>
-									<hr>
+									{{-- <hr>
 									<li class="nav-item">
 										<a href="#" class="icons">
 											<i class="fa fa-user" aria-hidden="true"></i>
@@ -95,13 +89,13 @@
 										<a href="#" class="icons">
 											<i class="fa fa-heart-o" aria-hidden="true"></i>
 										</a>
-									</li>
+									</li> --}}
 									<hr>
 									<li class="nav-item">
 										<a href="{{ route('front.list_cart') }}" class="icons">
-										  <i class="lnr lnr lnr-cart"></i>
+										  <i class="lnr lnr lnr-cart">(0)</i>
 										</a>
-									  </li>
+									  </li> 
 									<hr>
 								</ul>
 							</div>
