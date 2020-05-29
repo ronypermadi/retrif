@@ -31,12 +31,12 @@ Auth::routes();
 //SECARA OTOMATIS AKAN DIAWALI DENGAN administrator
 //CONTOH: /administrator/category ATAU /administrator/product, DAN SEBAGAINYA
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
-    Route::get('/', 'back\HomeController@index')->name('home'); //JADI ROUTING INI SUDAH ADA DARI ARTIKEL SEBELUMNYA TAPI KITA PINDAHKAN KEDALAM GROUPING
-
+    Route::get('/', 'back\HomeController@index')->name('home');
     Route::resource('category', 'back\CategoryController')->except(['create', 'show']);
     Route::resource('product', 'back\ProductController')->except(['show']);
     Route::get('/product/bulk', 'back\ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'back\ProductController@massUpload')->name('product.saveBulk');
+    Route::post('/product/marketplace', 'back\ProductController@uploadViaMarketplace')->name('product.marketplace');
 });
 Route::group(['prefix' => 'orders','middleware' => 'auth', 'namespace' => 'back'], function() {
     Route::get('/', 'OrderController@index')->name('orders.index');
