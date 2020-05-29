@@ -53,7 +53,7 @@ class CartController extends Controller
 
         return redirect()->back()->with(['success' => 'Produk Ditambahkan ke Keranjang'])->cookie($cookie);
     }
-
+ 
     public function listCart(){
         //MENGAMBIL DATA DARI COOKIE
         $carts = $this->getCarts();

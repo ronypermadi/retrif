@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>Retrif Store - Smartphone and gadget accecories</title>
+    <title>OneMarket - Ecommerce</title>
 @endsection
 
 @section('content')

@@ -12,6 +12,12 @@ use App\Order;
 
 class FrontController extends Controller
 {
+    private function getCarts(){
+        $carts = json_decode(request()->cookie('my-carts'), true);
+        $carts = $carts != '' ? $carts:[];
+        return $carts;
+    }
+
     public function index(){
         //MEMBUAT QUERY UNTUK MENGAMBIL DATA PRODUK YANG DIURUTKAN BERDASARKAN TGL TERBARU
         //DAN DI-LOAD 10 DATA PER PAGENYA

@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('front.ecommerce.*', 'App\Http\View\CategoryComposer');
+        View::composer('front.ecommerce.*', 'App\Http\View\CartComposer');
     }
 }
