@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>DW Ecommerce - Pusat Belanja Online</title>
+    <title>Retrif Store - Smartphone and gadget accecories</title>
 @endsection
 
 @section('content')
@@ -30,6 +30,30 @@
 		<div class="main_title">
 			<h2>Semua Kategori</h2>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae excepturi, quae officia cum repellendus quidem molestias earum repellat dignissimos, voluptate labore sapiente repudiandae inventore eum, similique modi impedit quasi. Quas..</p>
+			<br>
+			<div class="container">
+				<div class="row searchFilter" >
+				   <div class="col-sm-12" >
+					<div class="input-group" >
+					 <input id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
+					 <div class="input-group-btn" >
+					  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
+					  <div class="dropdown-menu dropdown-menu-right" >
+						 <ul class="category_filters" >
+						  <li >
+						   <input class="cat_type category-input" data-label="All" id="all" value="" name="radios" type="radio" ><label for="all" >All</label>
+						  </li>
+						  <li >
+						   <input type="radio" name="radios" id="Programming" value="Programming" ><label class="category-label" for="Programming" >Programming</label>
+						  </li>
+						 </ul>
+					  </div>
+					  <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
+					 </div>
+					</div>
+				   </div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="container-fluid row">

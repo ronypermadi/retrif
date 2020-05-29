@@ -7,7 +7,7 @@
 	<meta name="description" content="OneMart - Aplikasi Ecommerce">
 	<meta name="author" content="Rony Permadi">
   <meta name="keyword" content="aplikasi ecommerce laravel, tutorial laravel basic, belajar laravel, panduan belajar laravel">
-  <link rel="icon" href="{{ asset('assets/img/favicon.jpg')}}">
+  <link rel="icon" href="{{ asset('assets/img/favicon.png')}}">
 
     @yield('title')
 
