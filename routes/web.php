@@ -46,6 +46,12 @@ Route::group(['prefix' => 'orders','middleware' => 'auth', 'namespace' => 'back'
     Route::get('/return/{invoice}', 'OrderController@return')->name('orders.return');
     Route::post('/return', 'OrderController@approveReturn')->name('orders.approve_return');
 });
+Route::group(['prefix' => 'reports','middleware' => 'auth', 'namespace' => 'back'], function() {
+    Route::get('/order', 'HomeController@orderReport')->name('report.order');
+    Route::get('/order/pdf/{daterange}', 'HomeController@orderReportPdf')->name('report.order_pdf');
+    Route::get('/return', 'HomeController@returnReport')->name('report.return');
+    Route::get('/return/pdf/{daterange}', 'HomeController@returnReportPdf')->name('report.return_pdf');
+});
 
 Route::group(['prefix' => 'member', 'namespace' => 'front'], function() {
     Route::get('login', 'LoginController@loginForm')->name('customer.login');
