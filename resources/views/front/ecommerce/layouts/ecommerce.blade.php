@@ -41,7 +41,9 @@
 		<div class="top_menu row m0">
 			<div class="container-fluid">
 				<div class="float-left">
-					<p>Hubungi kami : 0272 0000 0000</p>
+					<p onload="">Hubungi kami : 0272 0000 0000 | <b>Latitude</b> : <input type="text" name="lat" id="lat" style="border: none;
+						border-color: transparent;" > | <b>Longitude</b> : <input type="text" name="long" id="long" style="border: none;
+border-color: transparent;"></p>
 				</div>
 				<div class="float-right">
 					<ul class="right_side">
@@ -281,5 +283,25 @@
 	<script src="{{ asset('ecommerce/js/mail-script.js') }}"></script>
 	<script src="{{ asset('ecommerce/js/theme.js') }}"></script>
 	@yield('js')
+	<script>
+		// var x = document.getElementById("mylocation");
+		
+			function getLocation(){
+				if (navigator.geolocation){
+					navigator.geolocation.getCurrentPosition(showPosition);
+				}
+				// else{
+				// 	x.innerHTML="Geolocation is not supported by this browser.";
+				// }
+			}
+			
+			function showPosition(position){
+				// x.innerHTML="Latitude: " + position.coords.latitude + 
+				// "<br>Longitude: " + position.coords.longitude;  
+				$('#long').val(position.coords.longitude);
+				$('#lat').val(position.coords.latitude);
+			}
+			getLocation()
+		</script>
 </body>
 </html>
