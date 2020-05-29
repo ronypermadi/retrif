@@ -23,6 +23,7 @@ Route::post('/cart/update', 'front\CartController@updateCart')->name('front.upda
 Route::get('/checkout', 'front\CartController@checkout')->name('front.checkout');
 Route::post('/checkout', 'front\CartController@processCheckout')->name('front.store_checkout');
 Route::get('/checkout/{invoice}', 'front\CartController@checkoutFinish')->name('front.finish_checkout');
+Route::get('/product/ref/{user}/{product}', 'front\FrontController@referalProduct')->name('front.afiliasi');
 
 Auth::routes();
 
@@ -67,7 +68,7 @@ Route::group(['prefix' => 'member', 'namespace' => 'front'], function() {
         Route::post('orders/accept', 'OrderController@acceptOrder')->name('customer.order_accept');
         Route::get('orders/return/{invoice}', 'OrderController@returnForm')->name('customer.order_return');
         Route::put('orders/return/{invoice}', 'OrderController@processReturn')->name('customer.return');
-
+        Route::get('/afiliasi', 'FrontController@listCommission')->name('customer.affiliate');
         Route::get('payment', 'OrderController@paymentForm')->name('customer.paymentForm');
         Route::post('payment', 'OrderController@storePayment')->name('customer.savePayment');
         Route::get('setting', 'FrontController@customerSettingForm')->name('customer.settingForm');

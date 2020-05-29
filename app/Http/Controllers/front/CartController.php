@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use DB;
 use App\Mail\CustomerRegisterMail;
 use Mail;
+use Cookie;
 
 class CartController extends Controller
 {
@@ -129,6 +130,12 @@ class CartController extends Controller
         //DATABASE TRANSACTION BERFUNGSI UNTUK MEMASTIKAN SEMUA PROSES SUKSES UNTUK KEMUDIAN DI COMMIT AGAR DATA BENAR BENAR DISIMPAN, JIKA TERJADI ERROR MAKA KITA ROLLBACK AGAR DATANYA SELARAS
         DB::beginTransaction();
         try {
+            
+            //GET COOKIE DARI BROWSER
+            $affiliate = json_decode(request()->cookie('my-afiliasi'), true);
+            //EXPLODE DATA COOKIE UNTUK MEMISAHKAN USERID DAN PRODUCTID
+            $explodeAffiliate = explode('-', $affiliate);
+
             //CHECK DATA CUSTOMER BERDASARKAN EMAIL
             $customer = Customer::where('email', $request->email)->first();
             //JIKA DIA TIDAK LOGIN DAN DATA CUSTOMERNYA ADA
@@ -164,8 +171,10 @@ class CartController extends Controller
                 'customer_phone' => $request->customer_phone,
                 'customer_address' => $request->customer_address,
                 'district_id' => $request->district_id,
-                'subtotal' => $subtotal
+                'subtotal' => $subtotal,
+                'ref' => $affiliate != '' && $explodeAffiliate[0] != auth()->guard('customer')->user()->id ? $affiliate:NULL
             ]);
+            //CODE DIATAS MELAKUKAN PENGECEKAN JIKA USERID NYA BUKAN DIRINYA SENDIRI, MAKA AFILIASINYA DISIMPAN
 
             foreach ($carts as $row) {
                 $product = Product::find($row['product_id']);
@@ -184,6 +193,9 @@ class CartController extends Controller
             $carts = [];
             //KOSONGKAN DATA KERANJANG DI COOKIE
             $cookie = cookie('my-cart', json_encode($carts), 2880);
+            //KEMUDIAN HAPUS DATA COOKIE AFILIASI
+            Cookie::queue(Cookie::forget('my-afiliasi'));
+
             //EMAILNYA JUGA UNTUK CUSTOMER BARU
             if (!auth()->guard('customer')->check()) {
                 Mail::to($request->email)->send(new CustomerRegisterMail($customer, $password));
