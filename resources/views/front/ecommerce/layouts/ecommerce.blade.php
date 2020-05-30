@@ -92,7 +92,7 @@
 									<hr>
 									<li class="nav-item">
 										<a href="{{ route('front.list_cart') }}" class="icons">
-										  <i class="lnr lnr lnr-cart">(0)</i>
+										  <i class="lnr lnr lnr-cart">({{$mycart}})</i>
 										</a>
 									  </li> 
 									<hr>
