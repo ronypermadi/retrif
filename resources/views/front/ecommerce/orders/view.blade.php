@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>Order {{ $order->invoice }} - DW Ecommerce</title>
+    <title>Order {{ $order->invoice }} - Retrif Store</title>
 @endsection
 
 @section('content')

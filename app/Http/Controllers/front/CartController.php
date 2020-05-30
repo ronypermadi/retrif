@@ -231,8 +231,10 @@ class CartController extends Controller
             'headers' => [
                 'Authorization' => 'hwA8w6CMvQZ3U061JU5IGsvrIMr2a7NbBMTo4kSv'
             ],
+            //yogyakarta id 5, sleman id 419
+            //jawa tengah id 10, klaten id 196
             'form_params' => [
-                'origin' => 22, //ASAL PENGIRIMAN, 22 = BANDUNG
+                'origin' => 196, //ASAL PENGIRIMAN, 196 = Klaten
                 'destination' => $request->destination,
                 'weight' => $request->weight,
                 'courier' => 'jne,jnt' //MASUKKAN KEY KURIR LAINNYA JIKA INGIN MENDAPATKAN DATA ONGKIR DARI KURIR YANG LAIN

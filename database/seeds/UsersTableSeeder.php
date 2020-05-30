@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
         //BCRYPT DIGUNAKAN UNTUK MEN-ENKRIPSI SEBUAH STRING
         //KARENA PASSWORD HARUS DISIMPAN DALAM KEADAAN TER-ENKRIPSI
         User::create([
-            'name' => 'Admin RonRon',
-            'email' => 'admin@ruangsiswa.net',
+            'name' => 'Admin Retrif',
+            'email' => 'admin@retrifstore.com',
             'password' => bcrypt('bismillah')
         ]);
     }

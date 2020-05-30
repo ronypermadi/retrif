@@ -12,8 +12,8 @@
 			<div class="container">
 				<div class="banner_content row">
 					<div class="offset-lg-2 col-lg-8">
-						<h3>Fashion for
-							<br />Upcoming Winter</h3>
+						<h3>Retrif Store
+							<br />Smartphone and gadget accecories</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 							aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 						<a class="white_bg_btn" href="#">View Collection</a>
@@ -23,166 +23,8 @@
 		</div>
 	</section>
 	<!--================End Home Banner Area =================-->
-<!--================Category Area =================-->
-<section class="category_area section_gap">
-<div class="main_box">
-	<div class="row">
-		<div class="main_title">
-			<h2>Semua Kategori</h2>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae excepturi, quae officia cum repellendus quidem molestias earum repellat dignissimos, voluptate labore sapiente repudiandae inventore eum, similique modi impedit quasi. Quas..</p>
-			<br>
-			<div class="container">
-				<div class="row searchFilter" >
-				   <div class="col-sm-12" >
-					<div class="input-group" >
-					 <input id="table_filter" type="text" class="form-control" aria-label="Text input with segmented button dropdown" >
-					 <div class="input-group-btn" >
-					  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
-					  <div class="dropdown-menu dropdown-menu-right" >
-						 <ul class="category_filters" >
-						  <li >
-						   <input class="cat_type category-input" data-label="All" id="all" value="" name="radios" type="radio" ><label for="all" >All</label>
-						  </li>
-						  <li >
-						   <input type="radio" name="radios" id="Programming" value="Programming" ><label class="category-label" for="Programming" >Programming</label>
-						  </li>
-						 </ul>
-					  </div>
-					  <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
-					 </div>
-					</div>
-				   </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid row">
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-mobile"></i></div>
-						<h4 class="clrchg">Mobiles</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab2">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-laptop"></i></div>
-						<h4 class="clrchg"> Electronics & Appliances</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab3">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-car"></i></div>
-						<h4 class="clrchg">Cars</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab4">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-motorcycle"></i></div>
-						<h4 class="clrchg">Bikes</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab5">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-wheelchair"></i></div>
-						<h4 class="clrchg">Furnitures</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab6">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-paw"></i></div>
-						<h4 class="clrchg">Pets</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab7">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-book"></i></div>
-						<h4 class="clrchg">Books, Sports & Hobbies</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab8">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-asterisk"></i></div>
-						<h4 class="clrchg">Fashion</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab9">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-gamepad"></i></div>
-						<h4 class="clrchg">Kids</h4>
-					</div>
-				</div>
-			</a>
-		</div>	
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab10">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-shield"></i></div>
-						<h4 class="clrchg">Services</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab11">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-at"></i></div>
-						<h4 class="clrchg">Jobs</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="col-md-2 focus-grid">
-			<a href="categories.html#parentVerticalTab12">
-				<div class="focus-border">
-					<div class="focus-layout">
-						<div class="focus-image"><i class="fa fa-home"></i></div>
-						<h4 class="clrchg">Real Estate</h4>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
-</div>
-</section>
-<!--================End Category Area =================-->
 	<!--================Hot Deals Area =================-->
-	{{-- <section class="hot_deals_area section_gap">
+	<section class="hot_deals_area section_gap">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-6">
@@ -208,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-	</section> --}}
+	</section>
 	<!--================End Hot Deals Area =================-->
 	
 	<!--================Feature Product Area =================-->

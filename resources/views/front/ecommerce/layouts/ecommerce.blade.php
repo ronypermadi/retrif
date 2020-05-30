@@ -51,7 +51,6 @@
 							<li><a href="{{ route('customer.login') }}">Login</a></li>
 						@endif
 						<li><a href="{{ route('customer.dashboard') }}">My Account</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>
@@ -224,8 +223,8 @@
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
 				<p class="col-lg-12 footer-text text-center">
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                    All rights reserved | This template is made with 
-                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://daengweb.id" target="_blank">Daengweb</a>
+                    All rights reserved |
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://retrif.ronypermadi.com" target="_blank">Retrif Store</a>
 				</p>
 			</div>
 		</div>

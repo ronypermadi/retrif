@@ -1,7 +1,7 @@
 @extends('front.ecommerce.layouts.ecommerce')
 
 @section('title')
-    <title>Pengaturan - DW Ecommerce</title>
+    <title>Pengaturan - Retrif Store</title>
 @endsection
 
 @section('content')
